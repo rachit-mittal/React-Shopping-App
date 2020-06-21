@@ -31,7 +31,7 @@ class SignIn extends Component {
     render(){
         return (
             <div className="sign-in">
-                <h2>I already have an account</h2>
+                <h2 className="title">I already have an account</h2>
                 <span>Sign in with your email and password</span>
 
                 <form onSubmit={this.handleSubmit}>
@@ -41,7 +41,7 @@ class SignIn extends Component {
                     <FormInput name="password" type="password" value={this.state.password} handleChange={this.handleChange} label ="password"  />
                     <div className="button">
                         <CustomButton type= "submit">Sign In</CustomButton>
-                        <CustomButton onClick = {signInWithGoogle} isGoogleSignIn> Sign In with Google</CustomButton>
+                        <CustomButton type= "button" onClick = {signInWithGoogle} isGoogleSignIn> Sign In with Google</CustomButton>
                     </div>
                     
                 </form>

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import './checkoutpage.scss';
 import CheckoutItem from  '../../components/checkout-item/checkout-item';
+import { selectCartItems, selectCartTotalPrice } from '../../redux/cart/cart.selectors';
 
 const CheckoutPage = ({cartItems, totalPrice}) => (
 
@@ -36,9 +37,9 @@ const CheckoutPage = ({cartItems, totalPrice}) => (
     </div>
 );
 
-const mapStateToProps = ({cart: { cartItems }}) => ({
-    cartItems,
-    totalPrice: cartItems.reduce((accumulatedQuantity, cartItem) => accumulatedQuantity + cartItem.quantity * cartItem.price, 0)
+const mapStateToProps = state => ({
+    cartItems: selectCartItems(state),
+    totalPrice: selectCartTotalPrice(state)
 });
 
 export default connect(mapStateToProps)(CheckoutPage);

@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import PreviewCollection from '../../components/preview-collection/preview-collection';
+import { selectShopCollections } from '../../redux/shop/shop.selectors';
 
 const ShopPage = ({collections}) =>  {
  
@@ -16,8 +17,8 @@ const ShopPage = ({collections}) =>  {
     )
 }
 
-const mapStateToProps = ({shop: {collections}}) => ({
-    collections
+const mapStateToProps = state => ({
+    collections: selectShopCollections(state)
 });
 
 export default connect(mapStateToProps)(ShopPage);

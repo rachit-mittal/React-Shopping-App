@@ -6,6 +6,7 @@ import './mini-cart.scss'
 import CustomButton from '../custom-button/custom-button';
 import CartItem from '../cart-item/cart-item';
 import { toggleMinicart } from '../../redux/cart/cart.actions';
+import { selectCartItems } from '../../redux/cart/cart.selectors';
 
 
 
@@ -33,8 +34,8 @@ const MiniCart = ({cartItems, history, dispatch}) => (
     </div>
 )
 
-const mapStatsToProps = ({cart: { cartItems}}) => ({
-    cartItems
+const mapStatsToProps = state => ({
+    cartItems: selectCartItems(state)
 })
 
 export default withRouter(connect(mapStatsToProps)(MiniCart));

@@ -1,5 +1,5 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-Also, can be accessed on Heroku via https://trendy-clothing.herokuapp.com/
+Also, can be accessed online via https://trendy-clothing.herokuapp.com/
 
 ## Available Scripts
 

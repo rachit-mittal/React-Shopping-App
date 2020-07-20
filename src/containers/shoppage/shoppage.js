@@ -1,24 +1,43 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import axios from 'axios';
 
 import PreviewCollection from '../../components/preview-collection/preview-collection';
 import { selectShopCollections } from '../../redux/shop/shop.selectors';
+import { getShopRequest } from '../../redux/shop/shop.actions'
 
-const ShopPage = ({collections}) =>  {
- 
-    return (
-        <div className = "shop-page">
-        {
-            collections.map (({id, ...otherCollectionProps}) => (
+
+class ShopPage extends Component {
+  
+    componentDidMount() {
+        this.props.getShopRequest();
+    };
+
+    render() {
+        const list = this.props.collections;
+        console.log("shop page list", list);
+        
+        let itemsToRender;
+
+        if(list) {
+            itemsToRender = list.map(({id, ...otherCollectionProps}) => (
                 <PreviewCollection  key={id} {...otherCollectionProps}/>
             ))
-        }
-        </div>
-    )
+
+        };
+        
+        return (
+            <div className = "shop-page">{itemsToRender}</div>
+        )
+        
+    }
+
+
 }
 
-const mapStateToProps = state => ({
-    collections: selectShopCollections(state)
+
+const mapStateToProps = ({shop: {collections} }) => ({
+    collections
 });
 
-export default connect(mapStateToProps)(ShopPage);
+export default connect(mapStateToProps, {getShopRequest})(ShopPage);

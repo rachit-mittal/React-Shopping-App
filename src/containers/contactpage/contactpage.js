@@ -24,7 +24,13 @@ const ContactPage = () => {
                 type="email" 
                 placeholder="enter your email" 
                 name="email" 
-                ref={register({required: "Email Required"})} 
+                ref={register({
+                    required: "Email Required", 
+                    pattern: {
+                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                        message: "Invalid Email address"
+                    }
+                })}
             />
             {errors.email && <p>{errors.email.message}</p>}
 

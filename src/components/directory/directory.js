@@ -8,10 +8,10 @@ const Directory = ({sections}) =>  {
     return(
         <div className='directory-menu'>
             {
-                sections.map(list => (
+                sections.map(({id, ...otherprops}) => (
                     <Menuitem 
-                        key={list.id} 
-                        product={list} 
+                        key={id} 
+                        {...otherprops} 
                     />
                 ))
             }

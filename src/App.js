@@ -8,9 +8,15 @@ import ShopPage from './containers/shoppage/shoppage';
 import Header from './components/header/header'
 import SigninPage from './containers/sign-inpage/signinpage';
 import CheckoutPage from './containers/checkoutpage/checkoutpage';
+import contactpage from './containers/contactpage/contactpage';
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 import { setCurrentUser } from './redux/user/user.actions';
 import { selectCurrentUser } from './redux/user/user.selectors';
+
+
+const HatsPage = () => (
+  <h1>HATS PAGE</h1>
+);
 
 class App extends React.Component {
   
@@ -51,6 +57,8 @@ class App extends React.Component {
           <Route path='/shop' exact component={ShopPage} />
           <Route exact path='/signin' render = {()=> this.props.currentUser ? (<Redirect to='/' />) : (<SigninPage />) } />
           <Route exact path= '/checkout' component={CheckoutPage} />
+          <Route exact path= '/contact' component={contactpage} />
+          <Route exact path= '/shop/hats' component={HatsPage} />
         </Switch>
       </div>
     );

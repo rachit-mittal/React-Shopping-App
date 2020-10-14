@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import axios from 'axios';
 
 import PreviewCollection from '../../components/preview-collection/preview-collection';
-import { selectShopCollections } from '../../redux/shop/shop.selectors';
 import { getShopRequest } from '../../redux/shop/shop.actions'
 
 
